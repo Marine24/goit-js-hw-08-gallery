@@ -1,4 +1,4 @@
-import {galleryItems} from "./gallery-items.js";
+import { galleryItems } from "./gallery-items.js";
 
 const galleryList = document.querySelector(".gallery");
 const modal = document.querySelector(".lightbox");
@@ -44,6 +44,7 @@ galleryList.addEventListener("click", e => {
 //-----------функция закрытия модального окна-------------------//
 function closeModal() {
   modal.classList.remove("is-open");
+  modalImage.setAttribute("src", "");
 }
 //--------------------------------------------------------------//
 
