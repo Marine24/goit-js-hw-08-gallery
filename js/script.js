@@ -26,13 +26,12 @@ const galleryItem = galleryItems.reduce((allItems, item) => {
 }, "");
 galleryList.insertAdjacentHTML("afterbegin", `${galleryItem}`);
 //--------------------------------------------------------------//
-
+const modalImage = document.querySelector(".lightbox___image");
 //-----------------открытие модального окна--------------------//
 galleryList.addEventListener("click", e => {
-  if (e.target === e.currentTarget) return;
   event.preventDefault();
+  if (e.target === e.currentTarget) return;
 
-  const modalImage = document.querySelector(".lightbox___image");
   const imageLink = e.target.getAttribute("data-source");
   const imageText = e.target.getAttribute("alt");
   modalImage.setAttribute("src", imageLink);
@@ -45,11 +44,13 @@ galleryList.addEventListener("click", e => {
 function closeModal() {
   modal.classList.remove("is-open");
   modalImage.setAttribute("src", "");
+  modalImage.setAttribute("alt", "");
 }
 //--------------------------------------------------------------//
 
 //-----------------закрытие по клику на div.overlay-------------//
 const modalOverlayClose = document.querySelector(".lightbox__content");
+
 modalOverlayClose.addEventListener("click", e => {
   if (e.target !== e.currentTarget) {
     return;
